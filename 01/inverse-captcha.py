@@ -1,18 +1,22 @@
 # Get puzzle digits
 digits = str(input("What's the puzzle input? \n"))
+jump = int(input("How big should the jump be? Write '0' to divide the number of digits by 2. \n"))
 
 solution = 0
 numberofdigits = len(digits)
+
+if jump == 0:
+    jump = numberofdigits / 2
 
 # Loop over each digit
 for index, digit in enumerate(digits):
 
     # Get the next index in the array.
-    # When the index is out of array bounds, set it to 0.
-    if index + 1 < numberofdigits:
-        nextindex = index + 1
+    # When the index is out of array bounds, set it to the 'overhead' number.
+    if index + jump < numberofdigits:
+        nextindex = index + jump
     else:
-        nextindex = 0
+        nextindex = (index + jump) - numberofdigits
 
     # Convert digit from string to int
     digit = int(digit)
@@ -23,4 +27,4 @@ for index, digit in enumerate(digits):
         solution += digit
 
 # Print the solution
-print solution
+print "Your captcha is " + str(solution) + "."
