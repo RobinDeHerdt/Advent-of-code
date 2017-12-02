@@ -14,10 +14,13 @@ for index, digit in enumerate(digits):
     else:
         nextindex = 0
 
+    # Convert digit from string to int
+    digit = int(digit)
+
     # Check if the current digit is the same as the next.
     # If it is, add it to the solution.
-    if int(digit) == int(digits[nextindex]):
-        solution += int(digit)
+    if digit == int(digits[nextindex]):
+        solution += digit
 
 # Print the solution
 print solution
