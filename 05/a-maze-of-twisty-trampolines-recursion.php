@@ -1,7 +1,7 @@
 <?php
 
 # Warning! This code is not performant enough to run on a normal workstation.
-# Use supercomputer or just use "a-maze-of-twisty-trampoline".
+# Use supercomputer or just use "a-maze-of-twisty-trampolines".
 
 $dataset = file_get_contents('instructions/instructions');
 
