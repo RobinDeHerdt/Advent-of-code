@@ -1,5 +1,8 @@
 <?php
 
+const ANAGRAM_CHECK = TRUE;
+const DUPLICATE_CHECK = TRUE;
+
 $dataset = file_get_contents('input/passphrases');
 
 # Explode on EOL (End Of Line constant)
@@ -29,12 +32,38 @@ function passphrase_is_valid($phrase) {
         continue;
       }
 
-      # If the words match, the phrase is invalid.
-      if ($word === $dword) {
-        return FALSE;
+      if (ANAGRAM_CHECK) {
+        # If the words are an anagran, the phrase is invalid.
+        if (is_anagram($word, $dword)) {
+          return FALSE;
+        }
+      }
+
+      if (DUPLICATE_CHECK) {
+        # If the words match, the phrase is invalid.
+        if (is_duplicate($word, $dword)) {
+          return FALSE;
+        }
       }
     }
   }
 
   return TRUE;
+}
+
+function is_anagram($word, $dword)  {
+  # Count_chars: counts the number of occurrences of every byte-value.
+  if (count_chars($word, 1) === count_chars($dword, 1)) {
+    return TRUE;
+  }
+
+  return FALSE;
+}
+
+function is_duplicate($word, $dword) {
+  if ($word === $dword) {
+    return TRUE;
+  }
+
+  return FALSE;
 }
