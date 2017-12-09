@@ -1,7 +1,7 @@
 <?php
 
 # Although this code is getting the correct answers,
-# something is most definately wrong with it.
+# something is most definitely wrong with it.
 # @todo Check next_block_index();
 
 $dataset = file_get_contents('input/blocks');
